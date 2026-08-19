@@ -19,8 +19,9 @@ export default function Home() {
     
     setLoading(true);
     try {
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://omni-ashy-iota.vercel.app/';
-      const response = await axios.post(`${backendUrl}api/query`, { query });
+      // Trailing slash normalize karo, warna `hostapi/query` jaisa URL ban jata hai.
+      const backendUrl = (process.env.NEXT_PUBLIC_BACKEND_URL || 'https://omni-ashy-iota.vercel.app').replace(/\/+$/, '');
+      const response = await axios.post(`${backendUrl}/api/query`, { query });
       setData(response.data);
     } catch (error) {
       console.error("Analysis Failed:", error);
