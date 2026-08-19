@@ -19,8 +19,8 @@ export default function Home() {
     
     setLoading(true);
     try {
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000';
-      const response = await axios.post(`${backendUrl}/api/query`, { query });
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://omni-ashy-iota.vercel.app/';
+      const response = await axios.post(`${backendUrl}api/query`, { query });
       setData(response.data);
     } catch (error) {
       console.error("Analysis Failed:", error);
