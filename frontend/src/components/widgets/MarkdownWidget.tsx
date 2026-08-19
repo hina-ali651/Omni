@@ -1,12 +1,15 @@
 interface MarkdownWidgetProps {
   title: string;
-  data: string;
+  data: string | { content?: string };
 }
 
 export default function MarkdownWidget({ title, data }: MarkdownWidgetProps) {
-  const content = typeof data === 'object' && data !== null && 'content' in data 
-    ? (data as any).content 
-    : typeof data === 'string' ? data : JSON.stringify(data);
+  const content =
+    typeof data === 'string'
+      ? data
+      : data !== null && typeof data === 'object' && 'content' in data
+        ? data.content
+        : JSON.stringify(data);
 
   return (
     <div className="glass-panel p-6 rounded-2xl h-full">

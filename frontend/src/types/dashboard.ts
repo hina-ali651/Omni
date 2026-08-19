@@ -1,12 +1,29 @@
 export type WidgetType = 'chart' | 'markdown' | 'metrics' | 'table' | 'sources';
 
-export interface WidgetData {
+export interface ChartData {
+  labels: string[];
+  datasets: { label: string; data: number[] }[];
+}
+
+export interface Metric {
+  label: string;
+  value: string;
+  trend: 'up' | 'down' | 'neutral';
+}
+
+interface WidgetBase {
   id: string;
-  type: WidgetType;
   title: string;
-  data: any;
   width: 'full' | 'half';
 }
+
+// Discriminated on `type` so renderWidget narrows `data` per case.
+export type WidgetData =
+  | (WidgetBase & { type: 'chart'; data: ChartData })
+  | (WidgetBase & { type: 'markdown'; data: string | { content?: string } })
+  | (WidgetBase & { type: 'metrics'; data: Metric[] })
+  | (WidgetBase & { type: 'table'; data: unknown })
+  | (WidgetBase & { type: 'sources'; data: unknown });
 
 export interface OmniResponse {
   summary: string;

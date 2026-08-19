@@ -13,7 +13,7 @@ interface ChartWidgetProps {
 export default function ChartWidget({ title, data }: ChartWidgetProps) {
   // Transfering basic labels/data format to recharts format
   const chartData = data.labels.map((label, index) => {
-    const obj: any = { name: label };
+    const obj: Record<string, string | number> = { name: label };
     data.datasets.forEach(dataset => {
       obj[dataset.label] = dataset.data[index];
     });
