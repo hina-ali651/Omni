@@ -5,7 +5,7 @@ rich, interactive visual report — complete with charts, metrics, tables, and s
 Simply ask a question, and OmniSight dynamically generates a structured intelligence 
 dashboard using Google Gemini AI.
 
-🔗 **Live Demo:** [omni-frontend-376461558194.asia-south1.run.app](https://omni-frontend-376461558194.asia-south1.run.app)
+🔗 **Live Demo:** [omni-frontend-376461558194.asia-south1.run.app](https://omni-izjq.vercel.app/)
 
 ---
 
